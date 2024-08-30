@@ -5,7 +5,7 @@
 SELECT title, last_name, first_name 
 FROM employee
 ORDER BY levels DESC
-LIMIT 1
+LIMIT 2
 
 
 /* Q2: Which countries have the most Invoices? */
