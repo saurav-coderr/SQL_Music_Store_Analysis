@@ -115,6 +115,8 @@ Album, and Artist tables. Note, this one is tricky because the Total spent in th
 so you need to use the InvoiceLine table to find out how many of each product was purchased, and then multiply this by the price
 for each artist. */
 
+/* best_selling_artist  It is cte */
+
 WITH best_selling_artist AS (
 	SELECT artist.artist_id AS artist_id, artist.name AS artist_name, SUM(invoice_line.unit_price*invoice_line.quantity) AS total_sales
 	FROM invoice_line
@@ -161,7 +163,7 @@ SELECT * FROM popular_genre WHERE RowNo <= 1
 
 /* Method 2: : Using Recursive */
 
-WITH RECURSIVE
+WITH RECURSIVE     /* second(below like max_genere_per_country) query depend on first query(sales_per_country) */
 	sales_per_country AS(
 		SELECT COUNT(*) AS purchases_per_genre, customer.country, genre.name, genre.genre_id
 		FROM invoice_line
